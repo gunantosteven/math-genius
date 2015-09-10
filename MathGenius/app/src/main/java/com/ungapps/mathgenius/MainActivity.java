@@ -1,4 +1,4 @@
-package com.gunsoft.mathgenius;
+package com.ungapps.mathgenius;
 
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ungapps.mathgenius.R;
 
 import java.util.Locale;
 

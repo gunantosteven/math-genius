@@ -7,21 +7,20 @@
     android:background="#ff000000">
 
     <TextView
-        android:layout_width="150dp"
-        android:layout_height="130dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/textView"
         android:background="#ff34ff0c"
         android:textSize="32sp"
-        android:layout_above="@+id/editText"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentEnd="false"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentStart="false"
         android:layout_below="@+id/textView2" />
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/editText"
@@ -32,7 +31,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp" />
+        android:hint="Click Here to answer" />
 
     <Button
         android:layout_width="150dp"

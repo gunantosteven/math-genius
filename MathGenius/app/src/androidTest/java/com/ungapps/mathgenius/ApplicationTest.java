@@ -1,4 +1,4 @@
-package com.gunsoft.mathgenius;
+package com.ungapps.mathgenius;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
