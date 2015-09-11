@@ -4,14 +4,20 @@ import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ungapps.mathgenius.R;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
+import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.Locale;
 
@@ -24,6 +30,8 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
 
     Integer a, b;
 
+    //InterstitialAd mInterstitialAd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +39,22 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
 
         et = (EditText) findViewById(R.id.editText);
         tv = (TextView) findViewById(R.id.textView);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+        /*mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+            }
+        });*/
+
+        /*requestNewInterstitial();*/
 
         tts = new TextToSpeech(this, this);
         tts.setPitch((float) 1.2);
@@ -49,7 +73,24 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
                 tts.speak(tv.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
             }
         }, 400);
+
+        et.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    jawab(v);
+                }
+                return false;
+            }
+        });
     }
+
+    /*private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
+    }*/
 
     @Override
     protected void onStart() {
@@ -95,6 +136,7 @@ public class MainActivity extends ActionBarActivity implements TextToSpeech.OnIn
         {
             Toast.makeText(getApplicationContext(), "Kesalahan Lain", Toast.LENGTH_LONG).show();
         }
+
     }
 
 
